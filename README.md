@@ -1,2 +1,2 @@
 # CEPP64-08
-CEPP
+Computer Engineering Project Preparation
