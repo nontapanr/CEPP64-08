@@ -19,10 +19,12 @@ from django.urls import path
 from django.urls import re_path as url
 from django.conf import settings
 from backend import views
+from datanly import views as dat
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^student$',views.studentApi),
     url(r'^student/(?P<id>\w+)$',views.studentApi),
+    url(r'^test$',views.upload)
 
 ]

@@ -6,6 +6,7 @@ from django.http.response import JsonResponse
 from backend.models import Student
 from backend.serializers import StudentSerializer
 from django.core.files.storage import default_storage
+from datanly import views as datan
 # Create your views here.
 
 @csrf_exempt
@@ -38,6 +39,20 @@ def studentApi(request,id=0):
         student=Student.objects.get(StudentID=id)
         student.delete()
         return JsonResponse("Deleted Successfully",safe=False)
+
+@csrf_exempt
+def upload(request):
+    csv_file = request.FILES['path_to_csv']
+    students = datan.testReturn(csv_file)
+    print(students)
+    for i in students:
+        student_serializer = StudentSerializer(data=i)
+        if student_serializer.is_valid():
+            student_serializer.save()
+        else:
+            print(i)
+    return JsonResponse("Good",safe=False)
+
 
 @csrf_exempt
 def SaveFile(request):
