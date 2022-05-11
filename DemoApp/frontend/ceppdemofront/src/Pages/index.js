@@ -29,7 +29,7 @@ const HomePage = () => {
 
     return (
         <div className="flex flex-col gap-6 justify-center items-center h-screen">
-            <h1> Page Title</h1>
+            <h1>File CSV Uploader</h1>
             <form onSubmit={handleSubmit}>
             <input type="file" accept=".csv" onChange={handleChange} />
             <button type="submit" className="bg-blue-500 px-4 py-2 rounded-md font-semibold">fetch</button>
